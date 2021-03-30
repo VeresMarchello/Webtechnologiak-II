@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse justify-content-start">
+        <div class="navbar-nav">
+            <a routerLink="/weldpoint-list" class="nav-item nav-link">WeldPoints</a>
+            <a routerLink="/add-weldpoint" class="nav-item nav-link">Add WeldPoint</a>
+            <a routerLink="/delete-weldpoint" class="nav-item nav-link">Delete WeldPoint</a>
+            <a class="nav-item nav-link active">Edit WeldPoint</a>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a routerLink="/login" class="nav-item nav-link">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<br />
+
+<div class="container">
+    <form [formGroup]="editWeldPointForm">
+        <div class="form-group">
+            <label>Robot Name</label>
+            <input type="text" class="form-control" placeholder="Enter Robot Name" formControlName="robot_name">
+        </div>
+        <div class="form-group">
+            <label>Schedule</label>
+            <input type="number" min="1" class="form-control" placeholder="Enter Schedule (number)" formControlName="schedule">
+        </div>
+        <div class="form-group">
+            <label>Error Code</label>
+            <input type="number" min="0" max="6" class="form-control" placeholder="Enter Error Code (0-6)" formControlName="error_code">
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label>TL</label>
+                <input type="number" step="0.1" class="form-control" placeholder="Enter X (number)" formControlName="tl">
+            </div>
+            <div class="col">
+                <label>BL</label>
+                <input type="number" step="0.1" class="form-control" placeholder="Enter Y (number)" formControlName="bl">
+            </div>
+            <div class="col">
+                <label>WL</label>
+                <input type="number" step="0.1" class="form-control" placeholder="Enter Z (number)" formControlName="wl">
+            </div>
+        </div>
+        <br />
+        <button class="btn btn-success btn-block" (click)="editWeldPoint()" [disabled]="editWeldPointForm.invalid">Edit</button>
+        <br />
+        <button class="btn btn-danger btn-block" (click)="cancel()">Cancel</button>
+        <br />
+    </form>
+</div>

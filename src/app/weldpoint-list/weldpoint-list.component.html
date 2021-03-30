@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse justify-content-start">
+        <div class="navbar-nav">
+            <a routerLink="/weldpoint-list" routerLinkActive="active" class="nav-item nav-link">WeldPoints</a>
+            <a routerLink="/add-weldpoint" class="nav-item nav-link">Add WeldPoint</a>
+            <a routerLink="/delete-weldpoint" class="nav-item nav-link">Delete WeldPoint</a>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a routerLink="/login" class="nav-item nav-link">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<br/>
+
+<div class="table-responsive text-center container">
+    <form>
+        <table class="table table-striped table-bordered">
+            <caption>List of WeldPoints</caption>
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Robot Name</th>
+                    <th scope="col">Schedule</th>
+                    <th scope="col">Error Code</th>
+                    <th scope="col">TL</th>
+                    <th scope="col">BL</th>
+                    <th scope="col">WL</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngIf="WeldPoints.length == 0">
+                    <td colspan="8">No WeldPoints Available</td>
+                </tr>
+                <tr *ngFor="let weldPoint of WeldPoints; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ weldPoint.robot_name }}</td>
+                    <td>{{ weldPoint.schedule }}</td>
+                    <td>{{ weldPoint.error_code }}</td>
+                    <td>{{ weldPoint.tl }}</td>
+                    <td>{{ weldPoint.bl }}</td>
+                    <td>{{ weldPoint.wl }}</td>
+                    <td><button class=" btn btn-block btn-success " (click)="editWeldPoint(i) ">Edit</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </form>
+    <br/>
+</div>
